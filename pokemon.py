@@ -10,6 +10,10 @@ import csv
 import os
 
 from selenium.webdriver.chrome.options import Options
+
+from selenium.webdriver.chrome.service import Service
+service = Service(executable_path="/usr/bin/chromedriver")
+
 options = Options()
 options.add_argument("--headless") # 추가하고 싶은 옵션 추가# 창없
 options.add_argument("--no-sandbox")
@@ -17,7 +21,7 @@ options.add_argument("--disable-dev-shm-usage")
 
 
 url ="https://pokemonkorea.co.kr/pokedex"
-driver = wb.Chrome(options=options)
+driver = wb.Chrome(service=service, options=options)
 driver.maximize_window()
 driver.get(url)
 
